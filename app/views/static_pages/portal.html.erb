@@ -1,0 +1,21 @@
+<html>
+
+    <h1 class="portal-header">Welcome to the FTP Ventures LLC web portal, <%= current_user.first_name %>.</h1>
+    <br>
+
+    <div class="main-section">
+        <div class="side-nav">
+            <a href="/tasks"><li class="side-nav-bar">Task list</li></a>
+            <a href="/houses"><li class="side-nav-bar">House Watchlist</li></a>
+            <a href="/transactions"><li class="side-nav-bar">Transactions</li></a>
+            <a href="/links"><li class="side-nav-bar">Important Links</li></a>
+            <a href="/calendar"><li class="side-nav-bar">Upcoming Events</li></a>
+            <a href="/amortization"><li class="side-nav-bar">Amortization Schedule</li></a>
+        </div>    
+
+        <div class="overview">
+            <div class="balance"> $<%= @value %> </div>
+            <div class="graph"><%= pie_chart Transaction.where(user_id: current_user.id).group(:transaction_type).count, height: "40vh"%></div>
+        </div> 
+    </div>    
+</html>    

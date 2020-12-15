@@ -1,0 +1,23 @@
+<div class="house-add">    
+    <a href="/houses/new"><li>Add House</li></a>
+</div>
+
+<div class="house-list">
+    <% @houses.each do |house| %>
+        <div class="listing">
+            <div class="picture">
+                <img src=<%= house.main_picture %> width="250" height="200">
+            </div>
+            <div class="information">
+                <span class="address"> <%= house.address %> </span>
+                <span> Listing Price: $<%= house.price %> </span>
+                <span> Year Built: <%= house.year_built %> </span>
+                <span> Beds: <%= house.beds %> </span>
+                <span> Baths: <%= house.baths %> </span>
+                <span> Square Footage:  <%= house.sqft %> </span>
+                <span> HOA: $<%= house.hoa_fee.blank? ? 0 : house.hoa_fee %> </span>
+                <span> <a href=<%= house.url %> >Link</a> </span>
+            </div>    
+        </div>    
+    <% end %>    
+</div>    

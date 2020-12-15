@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FTP portal</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <header>
+    <ul class="header-links">
+      <a href="/about-us"><li class="about-us">About Us</li></a>
+      <a><li class="members-link">Members</li></a>
+      <a><li class="contact-us">Contact</li></a>
+      <% if user_signed_in? %>
+        <a href="/home"><li>Member Home</li></a>
+        <div class="right-side">
+          <li> <%= current_user.email %> </li>
+          <a href="/sign-out"><li>Log Out</li></a>
+        </div> 
+      <% else %>
+        <a href="/portal"><li class="right-side">Log In</li></a>
+      <% end %>
+    </ul>
+  </header>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

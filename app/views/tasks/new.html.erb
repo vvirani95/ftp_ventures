@@ -1,0 +1,13 @@
+<div class="tasks-form-div">
+<form action="/tasks" method="post" class="tasks-form">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label>Task Title</label>
+    <br>
+    <input type="text" name="tasks[task_title]"></input>
+    <br>
+    <label>Task Description</label>
+    <br>
+    <textarea name="tasks[task_description]"></textarea>
+    <br>
+    <input type="submit">
+</form>

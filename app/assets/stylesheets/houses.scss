@@ -1,0 +1,70 @@
+// Place all the styles related to the houses controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.house-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.listing {
+    border: 2px solid maroon;
+    display: inline-flex;
+    padding: 25px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 50%;
+    background: white;
+}
+
+.listing div {
+    float: left;
+}
+
+.information {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 50px;
+}
+
+.address {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.house-add {
+    list-style: none;
+    font-weight: 600;
+    text-decoration: none;
+    margin-bottom: 50px;
+}
+
+.house-add a {
+    text-decoration: none;
+}
+
+.house-add li {
+    border: 2px solid maroon;
+    width: fit-content;
+    margin: auto;
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.form-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15vh
+}
+
+.house-form {
+    border: 2px solid maroon;
+    display: inline-block;
+    background-color: darkgray;
+    padding: 50px;
+    justify-content: space-around;
+}
+

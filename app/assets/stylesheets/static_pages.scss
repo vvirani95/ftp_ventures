@@ -1,0 +1,137 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.header-links {
+    list-style: none;
+    font-weight: 600;
+}
+
+.header-links li:hover {
+    background: darkgray;
+}
+
+.header-links li {
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.right-side {
+    display: inline-block;
+    float: right;
+    margin-right: 35px;
+}
+
+
+.about-us-head {
+    margin-top: 50px;
+}
+
+.member-login-form {
+    margin: auto;
+    text-align: center;
+    display: block;
+    width: 50%;
+}
+
+.side-nav-bar {
+    list-style: none;
+}
+
+.main-section {
+    display: inline-block;
+}
+
+.portal-header, .main-section {
+    margin-top: 50px;
+}
+
+.portal-header {
+    color: white;
+}
+
+.side-nav {
+    width: 18vw;
+    // height: 500px;
+    background-color: white;
+}
+
+.side-nav li {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid maroon;
+    text-align: center;
+}
+
+li:hover {
+    background-color: rgb(255, 160, 160);
+}
+
+.side-nav a {
+    text-decoration: none;
+}
+
+.overview {
+    width: 63vw;
+    margin-left: 10px;
+    height: 500px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.side-nav, .overview {
+    border: 2px solid maroon;
+    float: left;
+}
+
+.balance {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 50px;
+}
+
+.amortization-form {
+    border: 2px solid maroon;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.header-2, .month, .bal, .int-paid, .principal {
+    text-align: center;
+}
+
+.graph {
+    height: 10px;
+}
+
+.links-header {
+    color: white;
+    margin-bottom: 50px;
+}
+
+.link-list {
+    text-align: center;
+}
+
+.link-list a {
+    text-decoration: none;
+    color: white;
+}
+
+.link-list a:visited {
+    color: white;
+}
+
+.link-list div {
+    margin: 10px;
+}
+
+.welcome-header {
+    color: white;
+}

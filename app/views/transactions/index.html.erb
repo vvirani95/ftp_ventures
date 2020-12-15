@@ -1,0 +1,13 @@
+<div class="add-transaction">    
+    <a href="/transactions/new"><li>Add Transaction</li></a>
+</div>
+
+<div class="transaction-page">
+<% @transactions.each do |transaction| %>  
+  <div class="transaction-list">  
+    <div> <%= transaction.transaction_description %> </div>
+    <div> <%= transaction.value %> </div>
+    <div> <%= transaction.transaction_type %> </div>
+  </div>  
+<% end %>    
+</div>

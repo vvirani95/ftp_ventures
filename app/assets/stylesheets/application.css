@@ -1,0 +1,74 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ html {
+   font-family: Arial;
+ }
+
+ html body {
+   background-image: url('/assets/123.jpg');
+   background-blend-mode: multiply;
+   background-repeat: no-repeat;
+   background-size: cover;
+ }
+
+ h1 {
+     text-align: center;
+ }
+
+ a:visited {
+    color: black;
+ }
+
+ .header-links li {
+   border: 2px solid maroon;
+   background-color: white;
+ }
+
+ .header-links li:hover {
+   background-color: rgb(255, 160, 160);
+ }
+
+ li:hover {
+  background-color: rgb(255, 160, 160);
+ }
+
+ form * {
+   margin-bottom: 10px;
+ }
+
+ form {
+   border-radius: 5px;
+ }
+
+ .login-form-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .login-form {
+    background: darkgray;
+    border: 2px solid maroon;
+    padding: 50px;
+    display: inline-block;
+ }
+
+ .login-header-main {
+   text-align: center;
+   color: white;
+ }
+

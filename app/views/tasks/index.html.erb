@@ -1,0 +1,63 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<div class="task-buttons">    
+    <a href="/tasks/new"><li>Add Task</li></a>
+    <li class="edit" id="edit" onclick="toggle_button()">Edit Tasks</li>
+</div>
+
+<div class="task-page">
+<% @tasks.each do |task| %>
+    <div class="task-whole">
+        <div><%= task.task_title %></div>
+        <div><%= task.task_description %></div>
+        <% if task.task_complete? == false %>
+            <div class="red"><%= "Not Complete" %></div>
+        <% else %>
+            <div class="green"><%= "Complete" %></div>  
+        <% end %>    
+        <div><%= task.created_at %></div>
+        <button class="toggler" id="toggler" onclick="toggle(<%= task.id %>, <%= task.task_complete? %>)">Toggle</button> 
+        <br>
+    </div>
+<% end %>    
+</div>
+
+<style>
+    .toggler {
+        display: none;
+        height: 25px;
+        margin-top: 20px;
+        background: white;
+    }
+
+    .toggler:hover {
+        cursor: pointer;
+    }
+</style>
+
+<script>
+    function toggle(id, status){
+        const settings = {
+	        "async": true,
+	        "crossDomain": false,
+	        "url": `/tasks/${id}`,
+            "method": "PATCH",
+            "data": { "tasks": {
+		        "task_complete?": !status,
+            }},
+            "beforeSend": function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+        };
+
+        $.ajax(settings).done(function (response) {
+            
+        }); 
+    }
+
+    function toggle_button(){
+        $('[id="toggler"]').css("display", "block")
+    }
+        
+    
+</script>

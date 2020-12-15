@@ -1,0 +1,53 @@
+// Place all the styles related to the transactions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.transaction-list {
+    display: flex;
+    margin-top: 15px;
+}
+
+.transaction-list div {
+    border: 2px solid maroon;
+    padding: 20px;
+    background-color: white;
+}
+
+.transaction-page {
+    margin-left: 10vw;
+    margin-top: 75px;
+}
+
+.add-transaction {
+    list-style: none;
+    font-weight: 600;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 50px;
+}
+
+.add-transaction li {
+    border: 2px solid maroon;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: white;
+}
+
+.add-transaction li:hover {
+    background-color: rgb(255, 160, 160);
+}
+
+.transactions-form {
+    display: inline-block;
+    border: 2px solid maroon;
+    background-color: darkgray;
+    padding: 50px;
+    margin-top: 15vh;
+}
+
+.transactions-form-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

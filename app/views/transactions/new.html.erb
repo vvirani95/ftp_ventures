@@ -1,0 +1,23 @@
+<div class="transactions-form-div"> 
+<form class="transactions-form" action="/transactions" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <label>Transaction Description</label>
+    <br>
+    <input type="text" name="transactions[transaction_description]"></input>
+    <br>
+    <label>Transaction Value</label>
+    <br>
+    <input type="text" name="transactions[value]"></input>
+    <br>
+    <label>Transaction Type</label>
+    <br>
+    <select name="transactions[transaction_type]">
+        <option value="All Members">All Members</option>
+        <option value="Single Member">Single Member</option>
+    </select>
+    <br>
+    <input type="text" name="transactions[user_id]" value= <%= current_user.id %> style="visibility: hidden"></input>
+    <br>
+    <input type="submit">
+</form>
+</div>
