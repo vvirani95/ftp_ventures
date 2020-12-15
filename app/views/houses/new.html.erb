@@ -42,7 +42,7 @@
         "url": `https://realtor.p.rapidapi.com/properties/detail?listing_id=${listing_id}&prop_status=for_sale&property_id=${sanitized_property_id}`,
         "method": "GET",
         "headers": {
-            "x-rapidapi-key": "<%= ENV[x_rapidapi_key] %>",
+            "x-rapidapi-key": "<%= ENV[X_RAPIDAPI_KEY] %>",
             "x-rapidapi-host": "realtor.p.rapidapi.com"
         },
         "beforeSend": function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
