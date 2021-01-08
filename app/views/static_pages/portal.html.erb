@@ -1,5 +1,5 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <html>
-
     <h1 class="portal-header">Welcome to the FTP Ventures LLC web portal, <%= current_user.first_name %>.</h1>
     <br>
 
@@ -15,7 +15,37 @@
 
         <div class="overview">
             <div class="balance"> $<%= @value %> </div>
-            <div class="graph"><%= pie_chart Transaction.where(user_id: current_user.id).group(:transaction_type).count, height: "40vh"%></div>
+            <div class="graph"><%= line_chart @snaps.pluck(:created_at, :value), height: "40vh"%></div>
         </div> 
     </div>    
 </html>    
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    var portfolio_value = <%= @value %>
+
+    <% if @last.value != @value %>
+        snapshot();
+    <% end %>    
+
+
+    function snapshot(){
+
+        const settings = {
+            "crossDomain": false,
+            "contentType": 'application/json',
+            "dataType": 'json',
+            "url": '/snapshots',
+            "method": "POST",
+            "data": JSON.stringify({ "snapshots": {
+                "user_id": <%= current_user.id %>,
+                "value": portfolio_value
+            }}),
+            "beforeSend": function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+        };
+
+        $.ajax(settings).done(function (response) {
+
+        });
+    }
+</script>

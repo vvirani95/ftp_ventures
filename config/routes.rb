@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :transactions, only: [:index, :create, :new, :update]
   resources :houses, only: [:index, :create, :new]
   resources :tasks
+  resources :snapshots, only: [:create, :new]
   
   devise_for :users, controllers: {
     sessions: 'users/sessions'

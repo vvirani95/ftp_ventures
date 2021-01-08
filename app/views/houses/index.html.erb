@@ -1,3 +1,6 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
 <div class="house-add">    
     <a href="/houses/new"><li>Add House</li></a>
 </div>
@@ -17,7 +20,36 @@
                 <span> Square Footage:  <%= house.sqft %> </span>
                 <span> HOA: $<%= house.hoa_fee.blank? ? 0 : house.hoa_fee %> </span>
                 <span> <a href=<%= house.url %> >Link</a> </span>
+                
+                <span class="map-view-over" id="map-view-over" onclick="toggle_view()"> Map
+                    <br>
+                    <span class="map-view" id="map-view"><iframe width="500px" height="200px" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV["GOOGLE_MAPS_KEY"] %>&q=<%= house.address %>"></iframe>
+                    </span>
+                </span>
             </div>    
         </div>    
     <% end %>    
 </div>    
+
+<style> 
+        .map-view {
+            display: none;
+        }
+
+        .map-view-over {
+            text-decoration: underline;
+        }
+
+        .map-view-over:hover {
+            cursor: pointer;
+        }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    function toggle_view(address, id){
+        $(".map-view").toggle()
+    }
+</script>
+
