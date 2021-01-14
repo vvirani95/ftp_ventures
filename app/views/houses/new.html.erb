@@ -4,20 +4,24 @@
     </head>
     
     <div class="form-div">
-        <form class="house-form">
+        <form role="form" class="house-form">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            <label>Listing ID</label>
-            <br>
-            <input type="text" class="listing-id" id="listing-id">
-            <br>
-            <label>Property ID</label>
-            <br>
-            <input type="text" class="property-id" id="property-id">
-            <br>
-            <button class="submit" id="submit">Submit</button>
-            <br>
+            <div class="mb-3">
+                <label class="form-label">Listing ID</label>
+                <br>
+                <input type="text" class="form-control" id="listing-id"></input>
+                <div id="emailHelp" class="form-text">Source's Property Id (Bottom of page).</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Property ID</label>
+                <br>
+                <input type="text" class="form-control" id="property-id">
+                <div id="emailHelp" class="form-text">Found in URL "MXXXXX-XXXXX"</div>
+            </div>
+            <button type="submit" class="btn btn-light" id="submit">Submit</button>
         </form>
     </div>
+</div>
 </html>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

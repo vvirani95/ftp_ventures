@@ -1,13 +1,16 @@
 <div class="tasks-form-div">
-<form action="/tasks" method="post" class="tasks-form">
+<form role="form" action="/tasks" method="post" class="tasks-form">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <label>Task Title</label>
-    <br>
-    <input type="text" name="tasks[task_title]"></input>
-    <br>
-    <label>Task Description</label>
-    <br>
-    <textarea name="tasks[task_description]"></textarea>
-    <br>
-    <input type="submit">
+    <div class="mb-3">
+        <label class="form-label">Task Title</label>
+        <br>
+        <input type="text" class="form-control" name="tasks[task_title]"></input>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Task Description</label>
+        <br>
+        <textarea class="form-control" name="tasks[task_description]"></textarea>
+    </div>
+    <button type="submit" class="btn btn-light">Submit</button>
 </form>
+</div>

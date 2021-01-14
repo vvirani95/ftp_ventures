@@ -7,23 +7,30 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"> </script>
   </head>
 
   <header>
-    <ul class="header-links">
-      <a href="/about-us"><li class="about-us">About Us</li></a>
-      <a><li class="members-link">Members</li></a>
-      <a><li class="contact-us">Contact</li></a>
-      <% if user_signed_in? %>
-        <a href="/home"><li>Member Home</li></a>
-        <div class="right-side">
-          <li> <%= current_user.email %> </li>
-          <a href="/sign-out"><li>Log Out</li></a>
-        </div> 
-      <% else %>
-        <a href="/portal"><li class="right-side">Log In</li></a>
-      <% end %>
-    </ul>
+  <nav class="navbar navbar-inverse" id="navbar">
+  <ul class="header-links">
+    <a href="/about-us"><button type="button" class="btn btn-light">About Us</button></a>
+    <a><button type="button" class="btn btn-light">Members</button></a>
+    <a><button type="button" class="btn btn-light">Contact</button></a>
+    <% if user_signed_in? %>
+      <a href="/home"><button type="button" class="btn btn-light">Member Home</button></a>
+      <div class="right-side">
+        <button type="button" class="btn btn-light"> <%= current_user.email %> </button>
+        <a href="/sign-out"><button type="button" class="btn btn-light">Log Out</button></a>
+      </div> 
+    <% else %>
+      <div class="right-side">
+        <a href="/portal"><button type="button" class="btn btn-light">Log In</button></a>
+      </div>  
+    <% end %>
+  </ul>
+</nav>  
   </header>
 
   <body>

@@ -3,39 +3,35 @@
 </head>
 
 <div class="task-buttons">    
-    <a href="/tasks/new"><li>Add Task</li></a>
-    <li class="edit" id="edit" onclick="toggle_button()">Edit Tasks</li>
+    <a href="/tasks/new"><button type="button" class="btn btn-light">Add Task</button></a>
+    <button type="button" class="btn btn-light" onclick="toggle_button()">Edit Tasks</button>
 </div>
 
-<div class="task-page">
-<% @tasks.each do |task| %>
-    <div class="task-whole">
-        <div><%= task.task_title %></div>
-        <div><%= task.task_description %></div>
-        <% if task.task_complete? == false %>
-            <div class="red"><%= "Not Complete" %></div>
-        <% else %>
-            <div class="green"><%= "Complete" %></div>  
-        <% end %>    
-        <div><%= task.created_at %></div>
-        <button class="toggler" id="toggler" onclick="toggle(<%= task.id %>, <%= task.task_complete? %>)">Toggle</button> 
-        <br>
-    </div>
-<% end %>    
-</div>
-
-<style>
-    .toggler {
-        display: none;
-        height: 25px;
-        margin-top: 20px;
-        background: white;
-    }
-
-    .toggler:hover {
-        cursor: pointer;
-    }
-</style>
+<table class="table" style="width: 75%">
+  <thead>
+    <tr>
+      <th scope="col">Task</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @tasks.each do |task| %>  
+        <tr>
+          <td><%= task.task_title %></td>
+          <td><%= task.task_description %></td>
+          <% if task.task_complete? == false %>
+            <td class="red"><%= "Not Complete" %></td>
+          <% else %>  
+            <td class="green"><%= "Complete" %></td>
+          <% end %>  
+          <td><%= task.created_at %></td>
+          <td><button class="btn btn-light btn-sm" id="toggler" onclick="toggle(<%= task.id %>, <%= task.task_complete? %>)" style="display: none;">Toggle</button></td>
+        </tr>
+      <% end %>    
+  </tbody>
+</table>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
@@ -57,7 +53,7 @@
     }
 
     function toggle_button(){
-        $('[id="toggler"]').css("display", "block")
+        $('[id="toggler"]').css("display", "inline-block")
     }
         
     

@@ -1,13 +1,23 @@
 <div class="add-transaction">    
-    <a href="/transactions/new"><li>Add Transaction</li></a>
+    <a href="/transactions/new"><button type="button" class="btn btn-light">Add Transaction</button></a>
 </div>
 
-<div class="transaction-page">
-<% @transactions.each do |transaction| %>  
-  <div class="transaction-list">  
-    <div> <%= transaction.transaction_description %> </div>
-    <div> <%= transaction.value %> </div>
-    <div> <%= transaction.transaction_type %> </div>
-  </div>  
-<% end %>    
-</div>
+<table class="table" style="width: 75%">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Value</th>
+      <th scope="col">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @transactions.each do |transaction| %>  
+        <tr>
+          <td><%= transaction.transaction_description %></td>
+          <td><%= transaction.value %></td>
+          <td><%= transaction.transaction_type %></td>
+        </tr>
+      <% end %>    
+  </tbody>
+</table>
+

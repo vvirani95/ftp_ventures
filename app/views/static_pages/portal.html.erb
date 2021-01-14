@@ -17,7 +17,7 @@
             <div class="balance"> $<%= @value %> </div>
             <div class="graph"><%= line_chart @snaps.pluck(:created_at, :value), height: "40vh"%></div>
         </div> 
-    </div>    
+    </div>   
 </html>    
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

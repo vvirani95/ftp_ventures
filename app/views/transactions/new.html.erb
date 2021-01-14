@@ -1,23 +1,27 @@
-<div class="transactions-form-div"> 
-<form class="transactions-form" action="/transactions" method="post">
+<div class="transactions-form-div">
+<form role="form" action="/transactions" method="post" class="transactions-form">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <label>Transaction Description</label>
-    <br>
-    <input type="text" name="transactions[transaction_description]"></input>
-    <br>
-    <label>Transaction Value</label>
-    <br>
-    <input type="text" name="transactions[value]"></input>
-    <br>
-    <label>Transaction Type</label>
-    <br>
-    <select name="transactions[transaction_type]">
-        <option value="All Members">All Members</option>
-        <option value="Single Member">Single Member</option>
-    </select>
+    <div class="mb-3">
+        <label class="form-label">Transaction Description</label>
+        <br>
+        <input type="text" name="transactions[transaction_description]" class="form-control"></input>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Transaction Value</label>
+        <br>
+        <input type="text" name="transactions[value]" class="form-control"></input>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Transaction Type</label>
+        <br>
+        <select name="transactions[transaction_type]" class="form-control">
+            <option value="All Members">All Members</option>
+            <option value="Single Member">Single Member</option>
+        </select>
+    </div>
     <br>
     <input type="text" name="transactions[user_id]" value= <%= current_user.id %> style="visibility: hidden"></input>
     <br>
-    <input type="submit">
+    <button type="submit" class="btn btn-light">Submit</button>
 </form>
 </div>

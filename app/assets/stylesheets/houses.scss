@@ -57,14 +57,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 15vh
+    margin-top: 15vh;
+    text-align: center;
 }
 
 .house-form {
     border: 2px solid maroon;
     display: inline-block;
-    background-color: darkgray;
+    background-color: lightgray;
     padding: 50px;
     justify-content: space-around;
+}
+
+#emailHelp {
+    opacity: 75%;
 }
 

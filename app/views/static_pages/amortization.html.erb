@@ -3,34 +3,49 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
 
-    <form class="amortization-form">
-        <label>Loan Amount (After downpayment)</label>
-        <input type="text" class="loan-amt" id="loan-amt"></input>
+    <form role="form"class="amortization-form">
+    <div class="mb-3">
+        <label class="form-label">Loan Amount (After downpayment)</label>
         <br>
-        <label>Interest Rate</label>
-        <input type="text" class="int" id="int"></input>
+        <input type="text" class="form-control" id="loan-amt"></input>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Interest Rate</label>
         <br>
-        <label>Years for loan</label>
-        <input type="text" id="years" class="years"></input>
+        <input type="text" class="form-control" id="int"></input>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Years for loan</label>
         <br>
-        <label>Collected Rent (Will only change numbers if there is leftover rent money for month)</label>
-        <input type="text" class="rent" id="rent"></input>
+        <input type="text" class="form-control" id="years"></input>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Collected Rent (Will only change numbers if there is leftover rent money for month)</label>
         <br>
-        <label>Additional monthly payment (From our pocket)</label>
-        <input type="text" class="extra" id="extra"></input>
+        <input type="text" class="form-control" id="rent"></input>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Additional monthly payment (From our pocket)</label>
         <br>
-        <span class="sub" id="sub">Submit</span>
+        <input type="text" class="form-control" id="extra"></input>
+    </div>
+    <div class="mb-3">
+    <button type="button" class="btn btn-light" id="sub">Submit</button>
+    </div>
     </form>
 
-    
     <h1 id="header" class="header"></h1>
     <h2 id="header-2" class="header-2"></h2>
-    <div class="schedule">
-        <div id="month" class="month"></div>
-        <div id="bal" class="bal"></div>
-        <div id="int-paid" class="int-paid"></div>
-        <div id="principal" class="principal"></div>
-    </div>
+
+    <table class="table" style="width: 75%">
+        <thead>
+            <tr id="heade">
+            </tr>
+        </thead>
+        <tbody id="values">
+    
+        </tbody>
+    </table>    
    
 </html>
 
@@ -46,10 +61,8 @@ $("#sub").click(function(e) {
 
 function start(){
 
-    $("#month").empty()
-    $("#bal").empty()
-    $("#int-paid").empty()
-    $("#principal").empty()
+    $("#heade").empty()
+    $("#values").empty()
 
     var real = $("#loan-amt").val()
     var interest = $("#int").val()
@@ -77,12 +90,22 @@ function start(){
         var interest = new_int 
         count += 1
 
-        $("#month").append(`<div class="div">Month ${count}</div>`)
-        $("#bal").append(`<div class="div">${real}</div>`)
-        $('#int-paid').append(`<div class="div">Towards Interest: ${interest}</div>`)
-        $('#principal').append(`<div class="div">Towards Principal: ${towards_p + extra_from_rent + Number(extra)}`)
+        $("#values").append(
+            `<tr>
+                <td>${count}</td>
+                <td>${real}</td>
+                <td>${interest}</td>
+                <td>${towards_p + extra_from_rent + Number(extra)}</td>
+            </tr>`
+        )
     }
 
+    $("#heade").append(
+        `<th scope="col">Months</th>
+        <th scope="col">Balance</th>
+        <th scope="col">Towards Interest</th>
+        <th scope="col">Towards Principal</th>`
+    )
     $("#header").text(`${count} Months Needed`)
     $("#header-2").text(`Calculated monthly payment is $${payment}`)
 
@@ -109,6 +132,7 @@ function start(){
     .sub {
         text-align: center;
         font-weight: 600;
+        width: 50px;
     }
 
     .sub:hover {
@@ -117,12 +141,14 @@ function start(){
     }
 
     .amortization-form {
-        background-color: darkgray;
+        background-color: lightgray;
         border-radius: 5px;
+        text-align: center;
     }
 
     .header, .header-2 {
         color: white;
+        font-weight: 600;
     }
 
 </style>

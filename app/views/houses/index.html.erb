@@ -1,8 +1,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-
-<div class="house-add">    
-    <a href="/houses/new"><li>Add House</li></a>
+<div class="house-add" style="text-align: center;">    
+    <a href="/houses/new"><button type="button" class="btn btn-light">Add House</button></a>
 </div>
 
 <div class="house-list">
@@ -23,7 +22,7 @@
                 
                 <span class="map-view-over" id="map-view-over" onclick="toggle_view()"> Map
                     <br>
-                    <span class="map-view" id="map-view"><iframe width="500px" height="200px" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV["GOOGLE_MAPS_KEY"] %>&q=<%= house.address %>"></iframe>
+                    <span class="map-view" id="map-view"><iframe width="500px" height="200px" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDa-Od_UlQcg4FPlnx_5MbyzF9AUnXeHNU&q=<%= house.address %>"></iframe>
                     </span>
                 </span>
             </div>    
