@@ -12,13 +12,13 @@
             </div>
             <div class="information">
                 <div class="address"> <%= house.address %> </div>
-                <div> Listing Price: $<%= house.price %> </div>
-                <div> Year Built: <%= house.year_built %> </div>
-                <div> Beds: <%= house.beds %> </div>
-                <div> Baths: <%= house.baths %> </div>
-                <div> Square Footage:  <%= house.sqft %> </div>
-                <div> HOA: $<%= house.hoa_fee.blank? ? 0 : house.hoa_fee %> </div>
-                <div> <a href=<%= house.url %> >Link</a> </div>
+                <div class="text-fix"> Listing Price: $<%= house.price %> </div>
+                <div class="text-fix"> Year Built: <%= house.year_built %> </div>
+                <div class="text-fix"> Beds: <%= house.beds %> </div>
+                <div class="text-fix"> Baths: <%= house.baths %> </div>
+                <div class="text-fix"> Square Footage:  <%= house.sqft %> </div>
+                <div class="text-fix"> HOA: $<%= house.hoa_fee.blank? ? 0 : house.hoa_fee %> </div>
+                <div class="text-fix"> <a href=<%= house.url %> >Link</a> </div>
                 
                 <div class="map-view-over" id="map-view-over" onclick="toggle_view()"> Map
                     <br>
