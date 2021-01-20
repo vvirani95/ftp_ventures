@@ -16,9 +16,15 @@
   </head>
 
   <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-static-top">
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
+  <nav class="navbar navbar-expand navbar-dark bg-dark navbar-static-top">
+    <button type="button" data-toggle="collapse" data-target="#navbarNav1" aria-expanded="false" aria-controls="navbar" class="collapsed navbar-toggle">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav" id="navbarNav1">
       <span class="nav-item">
         <a class="nav-link" href="/about-us">About Us<span class="sr-only">(current)</span></a>
       </span>
@@ -28,26 +34,41 @@
       <span class="nav-item">
         <a class="nav-link" href="#">Contact</a>
       </span>
+      <% if user_signed_in? %>
+        <span class="navbar-item" id="member-home-hide">
+              <a class="nav-link" href="/home">Member Home</a>
+        </span>
+        <span class="navbar-item">
+            <a class="nav-link active" href="#" id="member-home-hide">Logged in as: <%= current_user.first_name + ' ' + current_user.last_name %></a>
+        </span>
+        <span class="navbar-item" id="member-home-hide">
+          <a class="nav-link" href="/sign-out" >Log Out</a>
+        </span>
+      <% else %>
+        <span class="navbar-item" id="member-home-hide">
+          <a class="nav-link" href="/portal">Login</a>
+        </span> 
+      <% end %>  
     </ul>
       <% if user_signed_in? %>
         <ul class="navbar-nav">
           <span class="navbar-item">
-            <a class="nav-link" href="/home">Member Home</a>
+            <a class="nav-link" href="/home" id="mobile-hide">Member Home</a>
           </span>
         </ul>
 
         <ul class="navbar-nav ml-auto">
           <span class="navbar-item">
-            <a class="nav-link active" href="#"><%= current_user.first_name + ' ' + current_user.last_name %></a>
+            <a class="nav-link active" href="#" id="mobile-hide"><%= current_user.first_name + ' ' + current_user.last_name %></a>
           </span>
 
-        <span class="navbar-item">
-          <a class="nav-link" href="/sign-out">Log Out</a>
+        <span class="navbar-item" id="mobile-hide">
+          <a class="nav-link" href="/sign-out" >Log Out</a>
         </span>
         </ul>
       <% else %>
-      <ul class="navbar-nav ml-auto">
-        <span class="navbar-item">
+      <ul class="navbar-nav ml-auto" id="navbarNav2"> 
+        <span class="navbar-item" id="mobile-hide">
           <a class="nav-link" href="/portal">Login</a>
         </span>  
        </ul> 

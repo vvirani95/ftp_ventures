@@ -91,3 +91,23 @@
  .log {
    margin-top: 200px;
  }
+
+ .icon-bar {
+  background-color: #fff;
+ }
+
+ @media(max-width:768px){
+  #navbarNav1, #navbarNav2 {
+    display: none;
+  }
+
+  #mobile-hide {
+    display: none;
+  }
+}
+
+@media(min-width:767px){
+  #member-home-hide {
+    display: none;
+  }
+}
