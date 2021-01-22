@@ -78,3 +78,8 @@
     font-size: 11px;
 }
 
+@media(max-width:767px){
+    .listing {
+        width: auto;
+    }
+}

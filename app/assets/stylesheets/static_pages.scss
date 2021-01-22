@@ -55,7 +55,6 @@
 
 .side-nav {
     width: 18vw;
-    // height: 500px;
     background-color: white;
 }
 
@@ -77,7 +76,7 @@ li:hover {
 .overview {
     width: 63vw;
     margin-left: 10px;
-    height: 500px;
+    height: 52vh;
     background-color: white;
     border-radius: 5px;
 }
@@ -90,7 +89,7 @@ li:hover {
 .balance {
     margin-top: 10px;
     text-align: center;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 .amortization-form {
@@ -142,6 +141,64 @@ li:hover {
     margin-top: 25px;
 }
 
+.members-header {
+    color: white;
+    font-weight: 600;
+    font-size: 30px;
+}
+
 .side-nav-bar {
     font-size: 15px;
+}
+
+.members-card-page {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.card {
+    width: 30vw;
+    height: 30rem;
+}
+
+.card-title {
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    background-color: black;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+}
+
+.card-text {
+    font-size: 12px;
+    text-indent: 25px;
+}
+
+ .button-div {
+    text-align: center;
+}
+
+@media(max-width:767px){
+    .side-nav {
+        height: 53vh;
+        width: 30vw
+    }
+
+    .amortization-form {
+        width: auto;
+    }
+
+    .members-card-page {
+        display: inline-flex;
+    }
+
+    .card {
+        width: 80vw;
+        height: auto;
+        margin-bottom: 25px;
+    }
 }
