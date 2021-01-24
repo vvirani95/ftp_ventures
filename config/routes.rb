@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/amortization', to: "static_pages#amortization"
   get '/links', to: "static_pages#links"
   get '/members', to: "static_pages#members"
+  get '/contact', to: "static_pages#contact"
   
   resources :transactions, only: [:index, :create, :new, :update]
   resources :houses, only: [:index, :create, :new]

@@ -24,9 +24,24 @@
     margin-right: 35px;
 }
 
+.contact-info {
+    color: white;
+    font-weight: 600;
+    text-align: center;
+}
 
 .about-us-head {
     margin-top: 50px;
+    width: 80vw;
+    border: 1px solid maroon;
+    background-color: black;
+    margin: auto;
+    padding: 25px;
+    margin-bottom: 50px;
+    color: white;
+    border-radius: 5px;
+    font-size: 50px;
+    font-weight: 1000;
 }
 
 .member-login-form {
@@ -143,8 +158,9 @@ li:hover {
 
 .members-header {
     color: white;
-    font-weight: 600;
-    font-size: 30px;
+    font-weight: 1000;
+    font-size: 40px;
+    margin-bottom: 50px;
 }
 
 .side-nav-bar {
@@ -156,6 +172,48 @@ li:hover {
     justify-content: space-evenly;
     flex-wrap: wrap;
     margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.welcome-body {
+    background-image: url("/assets/welcome_large");
+    max-width: 100%;
+    width: 100vw;
+}
+
+.welcome-div {
+    position: relative;
+}
+
+.cutout {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    animation: moveFirst 1s linear;
+    animation-iteration-count: 1;
+}
+
+.welcome-text {
+    color: white;
+    font-size: 70px;
+    font-weight: 1000;
+}
+
+.welcome-button {
+    color: black;
+    padding: 10px;
+    background-color: white;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+@-webkit-keyframes moveFirst {
+    from {
+      left: -50%;
+    }
+    to {
+      left: 50px;
+    }
 }
 
 .card {
