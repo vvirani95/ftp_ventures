@@ -1,6 +1,27 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.about-us-sec {
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 15vh;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.para-section {
+    width: 80%;
+    margin: auto;
+    text-indent: 25px;
+}
+
+.img-first, .text-first {
+    margin-right: 25px;
+}
+
+.about-us-sec img {
+    width: 35vw;
+}
 
 .header-links {
     list-style: none;
@@ -40,8 +61,7 @@
     margin-bottom: 50px;
     color: white;
     border-radius: 5px;
-    font-size: 50px;
-    font-weight: 1000;
+    font-size: 20px;
 }
 
 .member-login-form {
@@ -258,5 +278,32 @@ li:hover {
         width: 80vw;
         height: auto;
         margin-bottom: 25px;
+    }
+
+    .cutout {
+        left: 0px;
+        text-align: center;
+    }
+
+    @-webkit-keyframes moveFirst {
+        from {
+          left: -100%;
+        }
+        to {
+          left: 0px;
+        }
+    }
+
+    .about-us-sec {
+        display: block;
+        text-align: center;
+    }
+
+    .about-us-sec img {
+        width: 55vw;
+    }
+
+    .about-us-sec div {
+        margin: 10px;
     }
 }
