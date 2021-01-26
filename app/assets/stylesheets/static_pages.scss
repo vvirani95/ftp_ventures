@@ -104,8 +104,9 @@ li:hover {
     background-color: rgb(255, 160, 160);
 }
 
-.side-nav a {
+.side-nav a, .side-nav a:hover {
     text-decoration: none;
+    color: black;
 }
 
 .overview {
@@ -211,6 +212,11 @@ li:hover {
     left: 50px;
     animation: moveFirst 1s linear;
     animation-iteration-count: 1;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.welcome-button {
+    text-shadow: none;
 }
 
 .welcome-text {
@@ -230,9 +236,11 @@ li:hover {
 @-webkit-keyframes moveFirst {
     from {
       left: -50%;
+      opacity: 0%
     }
     to {
       left: 50px;
+      opacity: 100%
     }
 }
 
@@ -288,9 +296,11 @@ li:hover {
     @-webkit-keyframes moveFirst {
         from {
           left: -100%;
+          opacity: 0%
         }
         to {
           left: 0px;
+          opacity: 100%
         }
     }
 
