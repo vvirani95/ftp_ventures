@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :tasks
   resources :snapshots, only: [:create, :new]
   
-  devise_for :users, controllers: {
+  devise_for :users, :skip => [:registrations], controllers: {
     sessions: 'users/sessions'
   }
 
