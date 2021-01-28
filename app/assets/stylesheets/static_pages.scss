@@ -255,8 +255,10 @@ li:hover {
 
 .welcome-body {
     background-image: url("/assets/welcome_large");
-    max-width: 100%;
-    width: 100vw;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: scroll;
+    height: 100vh;
 }
 
 .welcome-div {
