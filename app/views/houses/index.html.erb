@@ -22,7 +22,7 @@
                 
                 <div class="map-view-over" id="map-view-over" onclick="toggle_view()"> Map
                     <br>
-                    <div class="map-view" id="map-view"><iframe width="500px" height="200px" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDa-Od_UlQcg4FPlnx_5MbyzF9AUnXeHNU&q=<%= house.address %>"></iframe>
+                    <div class="map-view" id="map-view"><iframe width="500px" height="200px" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV["GOOGLE_MAPS_KEY"] %>&q=<%= house.address %>"></iframe>
                     </div>
                 </div>
             </div>    
