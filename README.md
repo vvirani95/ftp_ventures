@@ -1,24 +1,21 @@
-# README
+# FTP VENTURES LLC.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A public facing website detailing FTP Ventures LLC. along with a built-in web portal for members.
 
-Things you may want to cover:
+* Can be found at: https://ftp-ventures.herokuapp.com/
 
-* Ruby version
+# Features available in the web portal
 
-* System dependencies
+* Member stake information, including snaphots of account value for graphing purposes.
 
-* Configuration
+* Togglebale task list for next steps to take for the business.
 
-* Database creation
+* Amortization schedule calculator.
 
-* Database initialization
+* Watch list where members can add houses they find viable using realtor.com API.
 
-* How to run the test suite
+# LANGUAGES USED
 
-* Services (job queues, cache servers, search engines, etc.)
+* Ruby on Rails
 
-* Deployment instructions
-
-* ...
+* JQuery/JavaScript
