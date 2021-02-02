@@ -1,0 +1,54 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<div class="house-add" style="text-align: center;">    
+    <a href="/mock/houses/new"><button type="button" class="btn btn-light">Add House</button></a>
+</div>
+
+<div class="house-list">
+    <% @mock_houses.each do |house| %>
+        <div class="listing">
+            <div class="picture">
+                <img src=<%= house.main_picture %> width="250" height="200">
+            </div>
+            <div class="information">
+                <div class="address"> <%= house.address %> </div>
+                <div class="text-fix"> Listing Price: $<%= house.price %> </div>
+                <div class="text-fix"> Year Built: <%= house.year_built %> </div>
+                <div class="text-fix"> Beds: <%= house.beds %> </div>
+                <div class="text-fix"> Baths: <%= house.baths %> </div>
+                <div class="text-fix"> Square Footage:  <%= house.sqft %> </div>
+                <div class="text-fix"> HOA: $<%= house.hoa_fee.blank? ? 0 : house.hoa_fee %> </div>
+                <div class="text-fix"> <a href=<%= house.url %> >Link</a> </div>
+                
+                <div class="map-view-over" id="map-view-over" onclick="toggle_view()"> Map
+                    <br>
+                    <div class="map-view" id="map-view"><iframe width="500px" height="200px" src="https://www.google.com/maps/embed/v1/place?key=<%= ENV["GOOGLE_MAPS_KEY"] %>&q=<%= house.address %>"></iframe>
+                    </div>
+                </div>
+            </div>    
+        </div>    
+    <% end %>    
+</div>    
+
+<style> 
+        .map-view {
+            display: none;
+        }
+
+        .map-view-over {
+            text-decoration: underline;
+        }
+
+        .map-view-over:hover {
+            cursor: pointer;
+        }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    function toggle_view(address, id){
+        $(".map-view").toggle()
+    }
+</script>
+

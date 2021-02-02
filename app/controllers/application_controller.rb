@@ -17,9 +17,15 @@ class ApplicationController < ActionController::Base
         end    
 
         return value
-    end    
+    end       
 
-    def tester
-        puts "hello"
-    end    
+    def mock_individual_value
+        value = 0
+        @transactions = MockTransaction.all
+        @transactions.each do |transaction|
+            value += transaction.value
+        end    
+
+        return value
+    end 
 end

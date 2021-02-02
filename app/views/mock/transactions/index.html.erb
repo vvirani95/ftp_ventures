@@ -1,0 +1,23 @@
+<div class="add-transaction">    
+    <a href="/mock/transactions/new"><button type="button" class="btn btn-light">Add Transaction</button></a>
+</div>
+
+<table class="table" style="width: 75%; background-color: white">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Value</th>
+      <th scope="col">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @mock_transactions.each do |transaction| %>  
+        <tr>
+          <td><%= transaction.transaction_description %></td>
+          <td><%= transaction.value %></td>
+          <td><%= transaction.transaction_type %></td>
+        </tr>
+      <% end %>    
+  </tbody>
+</table>
+

@@ -1,0 +1,60 @@
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<div class="task-buttons">    
+    <a href="/mock/tasks/new"><button type="button" class="btn btn-light">Add Task</button></a>
+    <button type="button" class="btn btn-light" onclick="toggle_button()">Edit Tasks</button>
+</div>
+
+<table class="table" style="width: 75%; background-color: white">
+  <thead>
+    <tr>
+      <th scope="col">Task</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @mock_tasks.each do |task| %>  
+        <tr>
+          <td><%= task.task_title %></td>
+          <td><%= task.task_description %></td>
+          <% if task.task_complete? == false %>
+            <td class="red"><%= "Not Complete" %></td>
+          <% else %>  
+            <td class="green"><%= "Complete" %></td>
+          <% end %>  
+          <td><%= task.created_at %></td>
+          <td><button class="btn btn-light btn-sm" id="toggler" onclick="toggle(<%= task.id %>, <%= task.task_complete? %>)" style="display: none;">Toggle</button></td>
+        </tr>
+      <% end %>    
+  </tbody>
+</table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function toggle(id, status){
+        const settings = {
+	        "async": true,
+	        "crossDomain": false,
+	        "url": `/mock/tasks/${id}`,
+            "method": "PATCH",
+            "data": { "mock_tasks": {
+		        "task_complete?": !status,
+            }},
+            "beforeSend": function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+        };
+
+        $.ajax(settings).done(function (response) {
+            
+        }); 
+    }
+
+    function toggle_button(){
+        $('[id="toggler"]').css("display", "inline-block")
+    }
+        
+    
+</script>

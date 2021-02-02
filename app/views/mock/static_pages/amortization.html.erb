@@ -1,0 +1,159 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+
+    <form role="form"class="amortization-form">
+    <div class="mb-3">
+        <label class="form-label">Loan Amount (After downpayment)</label>
+        <br>
+        <input type="text" class="form-control" id="loan-amt"></input>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Interest Rate</label>
+        <br>
+        <input type="text" class="form-control" id="int"></input>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Years for loan</label>
+        <br>
+        <input type="text" class="form-control" id="years"></input>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Collected Rent (Will only change numbers if there is leftover rent money for month)</label>
+        <br>
+        <input type="text" class="form-control" id="rent"></input>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Additional monthly payment (From our pocket)</label>
+        <br>
+        <input type="text" class="form-control" id="extra"></input>
+    </div>
+    <div class="mb-3">
+    <button type="button" class="btn btn-light" id="sub">Submit</button>
+    </div>
+    </form>
+
+    <h1 id="header" class="header"></h1>
+    <h2 id="header-2" class="header-2"></h2>
+    <h2 id="header-3" class="header-3"></h2>
+
+    <table class="table" style="width: 75%; background-color: white">
+        <thead>
+            <tr id="heade">
+            </tr>
+        </thead>
+        <tbody id="values">
+    
+        </tbody>
+    </table>    
+   
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+$("#sub").click(function(e) {
+    e.preventDefault();
+
+    start()
+})
+
+
+function start(){
+
+    $("#heade").empty()
+    $("#values").empty()
+
+    var real = $("#loan-amt").val()
+    var interest = $("#int").val()
+    var rate = interest / 100
+    var years = $("#years").val()
+    var months = years * 12
+    var monthly_rate = (((1.0 + rate)**(1/12)) - 1.0)
+    var payment = ((real * monthly_rate) / (1.0 - (1.0 + monthly_rate)**(-months)));
+    var extra = $("#extra").val();
+    var rent = $("#rent").val();
+    if ((rent - payment) > 0){
+        var extra_from_rent = rent - payment
+    } else {
+        var extra_from_rent = 0
+    }    
+
+    var total_interest = 0
+    var count = 0
+    while(real >= 1){
+    
+        var interest = real * monthly_rate
+        var towards_p = payment - interest
+        var new_bal = real - towards_p
+        var real = parseFloat(new_bal - extra_from_rent - extra).toFixed(2)
+        var new_int = real * monthly_rate
+        var interest = new_int 
+        count += 1
+        total_interest += interest
+
+        $("#values").append(
+            `<tr>
+                <td>${count}</td>
+                <td>${real}</td>
+                <td>${interest}</td>
+                <td>${towards_p + extra_from_rent + Number(extra)}</td>
+            </tr>`
+        )
+    }
+
+    $("#heade").append(
+        `<th scope="col">Months</th>
+        <th scope="col">Balance</th>
+        <th scope="col">Towards Interest</th>
+        <th scope="col">Towards Principal</th>`
+    )
+    $("#header").text(`${count} Months Needed`)
+    $("#header-2").text(`Calculated monthly payment is $${payment}`)
+    $("#header-3").text(`Total Interest paid: ${total_interest}`)
+
+}    
+</script>
+
+<style>
+    .month, .bal, .int-paid, .principal {
+        display: inline-flex;
+        flex-direction: column;
+    }
+
+    .div {
+        border: 1px solid black;
+        text-align: center;
+        padding: 5px;
+        background-color: white;
+    }
+
+    .schedule {
+        text-align: center;
+    }
+
+    .sub {
+        text-align: center;
+        font-weight: 600;
+        width: 50px;
+    }
+
+    .sub:hover {
+        cursor: pointer;
+        color: maroon;
+    }
+
+    .amortization-form {
+        background-color: lightgray;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .header, .header-2, .header-3 {
+        color: white;
+        font-weight: 600;
+        text-align: center;
+    }
+
+</style>

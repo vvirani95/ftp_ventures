@@ -1,0 +1,50 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<html>
+    <h1 class="portal-header">Welcome to the FTP Ventures LLC web portal, John Doe.</h1>
+    <br>
+
+    <div class="main-section">
+        <div class="side-nav">
+            <a href="/mock/tasks"><li class="side-nav-bar">Task list</li></a>
+            <a href="/mock/houses"><li class="side-nav-bar">House Watchlist</li></a>
+            <a href="/mock/transactions"><li class="side-nav-bar">Transactions</li></a>
+            <a href="/mock/links"><li class="side-nav-bar">Important Links</li></a>
+            <a href="/mock/calendar"><li class="side-nav-bar">Upcoming Events</li></a>
+            <a href="/mock/amortization"><li class="side-nav-bar">Amortization Schedule</li></a>
+        </div>    
+
+        <div class="overview">
+            <div class="balance"> $<%= @value %> </div>
+            <div class="graph"><%= line_chart @snaps.pluck(:created_at, :value), height: "40vh"%></div>
+        </div> 
+    </div>   
+</html>    
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    var portfolio_value = <%= @value %>
+
+    <% if @last.value != @value %>
+        snapshot();
+    <% end %> 
+
+
+    function snapshot(){
+
+        const settings = {
+            "crossDomain": false,
+            "contentType": 'application/json',
+            "dataType": 'json',
+            "url": '/mock/snapshots',
+            "method": "POST",
+            "data": JSON.stringify({ "mock_snapshots": {
+                "value": portfolio_value
+            }}),
+            "beforeSend": function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+        };
+
+        $.ajax(settings).done(function (response) {
+
+        });
+    }
+</script>
