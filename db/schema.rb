@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_000633) do
+ActiveRecord::Schema.define(version: 2021_02_02_013023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,45 @@ ActiveRecord::Schema.define(version: 2020_12_29_000633) do
     t.string "url"
     t.integer "rent_estimate"
     t.integer "rank_score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mock_houses", force: :cascade do |t|
+    t.string "address"
+    t.integer "price"
+    t.integer "year_built"
+    t.integer "beds"
+    t.integer "baths"
+    t.integer "sqft"
+    t.integer "hoa_fee"
+    t.integer "last_tax_amount"
+    t.string "main_picture"
+    t.string "url"
+    t.integer "rent_estimate"
+    t.integer "rank_score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mock_snapshots", force: :cascade do |t|
+    t.integer "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mock_tasks", force: :cascade do |t|
+    t.string "task_title"
+    t.string "task_description"
+    t.boolean "task_complete?", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mock_transactions", force: :cascade do |t|
+    t.string "transaction_description"
+    t.float "value"
+    t.string "transaction_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

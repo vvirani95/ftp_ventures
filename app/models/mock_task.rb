@@ -1,0 +1,2 @@
+class MockTask < ApplicationRecord
+end

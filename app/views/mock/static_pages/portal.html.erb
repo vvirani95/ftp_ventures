@@ -1,16 +1,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <html>
-    <h1 class="portal-header">Welcome to the FTP Ventures LLC web portal, <%= current_user.first_name %>.</h1>
+    <h1 class="portal-header">Welcome to the FTP Ventures LLC web portal, John Doe.</h1>
     <br>
 
     <div class="main-section">
         <div class="side-nav">
-            <a href="/tasks"><li class="side-nav-bar">Task list</li></a>
-            <a href="/houses"><li class="side-nav-bar">House Watchlist</li></a>
-            <a href="/transactions"><li class="side-nav-bar">Transactions</li></a>
-            <a href="/links"><li class="side-nav-bar">Important Links</li></a>
-            <a href="/calendar"><li class="side-nav-bar">Upcoming Events</li></a>
-            <a href="/amortization"><li class="side-nav-bar">Amortization Schedule</li></a>
+            <a href="/mock/tasks"><li class="side-nav-bar">Task list</li></a>
+            <a href="/mock/houses"><li class="side-nav-bar">House Watchlist</li></a>
+            <a href="/mock/transactions"><li class="side-nav-bar">Transactions</li></a>
+            <a href="/mock/links"><li class="side-nav-bar">Important Links</li></a>
+            <a href="/mock/calendar"><li class="side-nav-bar">Upcoming Events</li></a>
+            <a href="/mock/amortization"><li class="side-nav-bar">Amortization Schedule</li></a>
         </div>    
 
         <div class="overview">
@@ -32,7 +32,7 @@
 
     <% if @last.value != @value %>
         snapshot();
-    <% end %>    
+    <% end %> 
 
 
     function snapshot(){
@@ -41,10 +41,9 @@
             "crossDomain": false,
             "contentType": 'application/json',
             "dataType": 'json',
-            "url": '/snapshots',
+            "url": '/mock/snapshots',
             "method": "POST",
-            "data": JSON.stringify({ "snapshots": {
-                "user_id": <%= current_user.id %>,
+            "data": JSON.stringify({ "mock_snapshots": {
                 "value": portfolio_value
             }}),
             "beforeSend": function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}

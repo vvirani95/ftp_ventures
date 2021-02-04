@@ -1,6 +1,12 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.overview-info {
+    margin-top: -5px;
+    text-align: center;
+    font-size: 15px;
+}
+
 .flip-card {
     perspective: 1000px; 
     width: 30vw;
@@ -168,7 +174,7 @@ li:hover {
 .overview {
     width: 63vw;
     margin-left: 10px;
-    height: 52vh;
+    height: 53vh;
     background-color: white;
     border-radius: 5px;
 }
@@ -205,6 +211,8 @@ li:hover {
 .links-header {
     color: white;
     margin-bottom: 50px;
+    font-size: 50px;
+    font-weight: 600;
 }
 
 .link-list {
@@ -214,6 +222,10 @@ li:hover {
 .link-list a {
     text-decoration: none;
     color: white;
+}
+
+.link-list span {
+    font-size: 25px;
 }
 
 .link-list a:visited {

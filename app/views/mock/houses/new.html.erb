@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    
+    <div class="form-div">
+        <form role="form" class="house-form">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <div class="mb-3">
+                <label class="form-label">Listing ID</label>
+                <br>
+                <input type="text" class="form-control" id="listing-id"></input>
+                <div id="emailHelp" class="form-text">Source's Property Id (Bottom of page).</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Property ID</label>
+                <br>
+                <input type="text" class="form-control" id="property-id">
+                <div id="emailHelp" class="form-text">Found in URL "MXXXXX-XXXXX"</div>
+            </div>
+            <button type="submit" class="btn btn-light" id="submit">Submit</button>
+        </form>
+    </div>
+</div>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $("#submit").click(function(e) {
+        e.preventDefault();
+
+        run();
+    })
+
+    function run(){
+        var listing_id = $("#listing-id").val();
+        var property_id = $("#property-id").val();
+        if (property_id[0] == "M") {
+            sanitized_property_id = property_id.slice(1, 6) + property_id.slice(7, 13);
+        } else {
+            sanitized_property_id = property_id;
+        } 
+
+    const settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": `https://realtor.p.rapidapi.com/properties/detail?listing_id=${listing_id}&prop_status=for_sale&property_id=${sanitized_property_id}`,
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "<%= ENV["X_RAPIDAPI_KEY"] %>",
+            "x-rapidapi-host": "realtor.p.rapidapi.com"
+        },
+        "beforeSend": function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+    };
+
+    $.ajax(settings).done(function (response) {
+        after(response);
+        window.location.replace("/mock/houses")
+    });
+    }
+
+    function after(json){
+        var address = json["listing"]["address"]["line"] + ", " + json["listing"]["address"]["city"] + ", " + json["listing"]["address"]["state_code"] + ", " + json["listing"]["address"]["postal_code"]
+        var list_price = json["listing"]["price"]
+        var year_built = json["listing"]["year_built"]
+        var beds = json["listing"]["beds"]
+        var baths = json["listing"]["baths"]
+        var sqft = json["listing"]["sqft"]
+        var lot = json["listing"]["lot_sqft"]
+        var hoa_fee = json["listing"]["hoa_fee"]
+    
+        try {
+            var last_tax = json["listing"]["tax_history"][0]["tax"]
+        } catch {
+            var last_tax = "N/A"
+        }
+    
+        var photo = json["listing"]["photos"][0]["href"]
+        var realtor_url = json["listing"]["web_url"]
+
+        const settings = {
+            "crossDomain": false,
+            "contentType": 'application/json',
+            "dataType": 'json',
+            "url": '/mock/houses',
+            "method": "POST",
+            "data": JSON.stringify({ "mock_houses": {
+                "address": address,
+                "price": list_price,
+                "year_built": year_built,
+                "beds": beds,
+                "baths": baths,
+                "sqft": sqft,
+                "hoa_fee": hoa_fee,
+                "last_tax_amount": last_tax,
+                "main_picture": photo,
+                "url": realtor_url
+            }}),
+            "beforeSend": function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+        };
+
+        $.ajax(settings).done(function (response) {
+       
+        });
+    };
+
+    function sanitize(id){
+        if (id[0] == "M") {
+            var sanitized_property_id = id.slice(1, 6) + id.slice(7, 13)
+        } else {
+            var sanitized_property_id = id
+        } 
+    }
+</script>
+

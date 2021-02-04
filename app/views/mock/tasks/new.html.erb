@@ -1,0 +1,16 @@
+<div class="tasks-form-div">
+<form role="form" action="/mock/tasks" method="post" class="tasks-form">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div class="mb-3">
+        <label class="form-label">Task Title</label>
+        <br>
+        <input type="text" class="form-control" name="mock_tasks[task_title]"></input>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Task Description</label>
+        <br>
+        <textarea class="form-control" name="mock_tasks[task_description]"></textarea>
+    </div>
+    <button type="submit" class="btn btn-light">Submit</button>
+</form>
+</div>

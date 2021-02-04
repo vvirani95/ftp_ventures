@@ -29,4 +29,15 @@ Rails.application.routes.draw do
     get '/sign-out', to: "users/sessions#destroy"
     # get '/home', to: "static_pages#portal"
   end  
+
+  namespace :mock do 
+    resources :transactions, only: [:index, :create, :new, :update]
+    resources :houses, only: [:index, :create, :new]
+    resources :tasks
+    resources :snapshots, only: [:create, :new]
+    get '/portal', to: "static_pages#portal"
+    get '/amortization', to: "static_pages#amortization"
+    get '/links', to: "static_pages#links"
+    get '/calendar', to: "static_pages#events"
+  end  
 end
