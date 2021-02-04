@@ -9,6 +9,16 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:first_name, :last_name, :email, :password, :password_confirmation) }
     end    
 
+    def total_value
+        value = 0
+        @transactions = Transaction.all
+        @transactions.each do |transaction|
+            value += transaction.value
+        end    
+        
+        return value
+    end    
+
     def individual_value
         value = 0
         @transactions = Transaction.where("transactions.user_id = #{current_user.id}", transaction_type: "All Members")

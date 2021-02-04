@@ -5,6 +5,7 @@ class StaticPagesController < ApplicationController
 
     def portal 
         @value = individual_value()
+        @total_value = total_value()
         @last = Snapshot.where("snapshots.user_id = #{current_user.id}").last
         @snaps = Snapshot.where("snapshots.user_id = #{current_user.id}")
         render "portal"
