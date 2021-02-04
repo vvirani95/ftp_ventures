@@ -96,9 +96,9 @@ function start(){
         $("#values").append(
             `<tr>
                 <td>${count}</td>
-                <td>${real}</td>
-                <td>${interest}</td>
-                <td>${towards_p + extra_from_rent + Number(extra)}</td>
+                <td>$${parseFloat(real).toFixed(2)}</td>
+                <td>$${parseFloat(interest).toFixed(2)}</td>
+                <td>$${parseFloat(towards_p + extra_from_rent + Number(extra)).toFixed(2)}</td>
             </tr>`
         )
     }
@@ -110,8 +110,8 @@ function start(){
         <th scope="col">Towards Principal</th>`
     )
     $("#header").text(`${count} Months Needed`)
-    $("#header-2").text(`Calculated monthly payment is $${payment}`)
-    $("#header-3").text(`Total Interest paid: ${total_interest}`)
+    $("#header-2").text(`Calculated monthly payment is $${parseFloat(payment).toFixed(2)}`)
+    $("#header-3").text(`Total Interest paid: $${parseFloat(total_interest).toFixed(2)}`)
 
 }    
 </script>

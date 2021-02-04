@@ -18,7 +18,7 @@
                 <div class="balance"> $<%= @value %> </div>
                 <div class="overview-info">
                     <div class="total_balance">Total Investments: $<%= @total_value %></div>
-                    <div class="stake">Stake Percentage: <%= (@value / @total_value) * 100 %>%</div>
+                    <div class="stake">Stake Percentage: <%= ((@value / @total_value) * 100).round(2) %>%</div>
                 </div>
             </div>
             <div class="graph"><%= line_chart @snaps.pluck(:created_at, :value), height: "40vh"%></div>
