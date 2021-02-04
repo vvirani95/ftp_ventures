@@ -19,6 +19,16 @@ class ApplicationController < ActionController::Base
         return value
     end    
 
+    def mock_total_value
+        value = 0
+        @transactions = MockTransaction.all
+        @transactions.each do |transaction|
+            value += transaction.value
+        end    
+        
+        return value
+    end    
+
     def individual_value
         value = 0
         @transactions = Transaction.where("transactions.user_id = #{current_user.id}", transaction_type: "All Members")
